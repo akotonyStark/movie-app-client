@@ -84,7 +84,11 @@ export default function MovieModal({ title, movieData }) {
 
   return (
     <div>
-      <Button variant='contained' onClick={handleClickOpen}>
+      <Button
+        variant='contained'
+        onClick={handleClickOpen}
+        data-testid='button-label'
+      >
         {title}
       </Button>
       <Dialog
