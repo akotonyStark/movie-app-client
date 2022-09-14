@@ -6,8 +6,8 @@ import NavHeader from './components/NavHeader'
 function App() {
   return (
     <div className='App'>
-      <NavHeader />
       <BrowserRouter>
+        <NavHeader />
         <Routes>
           <Route path='/' exact element={<MovieList />} />
           <Route path='/details' element={<MovieDetails />} />

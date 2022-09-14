@@ -6,7 +6,6 @@ import useFetch from '../customHooks/useFetch'
 const MovieList = () => {
   const url = 'http://localhost:3001/movies'
   const { data: movies, isLoading, isError } = useFetch(url)
-  console.log(movies)
 
   if (isLoading) {
     return (

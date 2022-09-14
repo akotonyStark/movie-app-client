@@ -1,5 +1,6 @@
 import React from 'react'
 import Box from '@mui/material/Box'
+import { NavLink } from 'react-router-dom'
 // import { Button } from '@mui/material'
 
 const NavHeader = () => {
@@ -7,13 +8,17 @@ const NavHeader = () => {
     <Box
       sx={{
         width: '100%',
-        height: 80,
+        height: 50,
         backgroundColor: '#333',
         padding: 2,
-        color: 'gold',
       }}
     >
-      <h1>MovieApp</h1>
+      <NavLink
+        to='/'
+        style={{ fontSize: 40, color: 'gold', textDecoration: 'none' }}
+      >
+        MovieApp
+      </NavLink>
     </Box>
   )
 }
