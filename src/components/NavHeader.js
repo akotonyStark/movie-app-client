@@ -1,7 +1,7 @@
 import React from 'react'
 import Box from '@mui/material/Box'
 import { NavLink } from 'react-router-dom'
-// import { Button } from '@mui/material'
+import MovieModal from './MovieModal'
 
 const NavHeader = () => {
   return (
@@ -10,14 +10,19 @@ const NavHeader = () => {
         height: 50,
         backgroundColor: '#333',
         padding: 2,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
       }}
     >
       <NavLink
         to='/'
-        style={{ fontSize: 40, color: 'gold', textDecoration: 'none' }}
+        style={{ fontSize: 30, color: 'gold', textDecoration: 'none' }}
       >
         MovieApp
       </NavLink>
+
+      <MovieModal />
     </Box>
   )
 }

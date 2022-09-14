@@ -18,8 +18,7 @@ const MovieItem = ({ movie }) => {
           src={poster}
           alt='poster'
         />
-
-        <p style={{ color: '#1976D2' }}>{movie.name}</p>
+        <p style={{ color: 'gold' }}>{movie.name}</p>
       </Box>
     </>
   )
