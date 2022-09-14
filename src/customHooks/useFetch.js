@@ -10,7 +10,6 @@ const useFetch = (url) => {
 
     try {
       const request = await fetch(url)
-      console.log(request)
       const response = await request.json()
 
       if (!response) {

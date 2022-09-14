@@ -3,6 +3,7 @@ import Box from '@mui/material/Box'
 import { NavLink } from 'react-router-dom'
 import MovieModal from './MovieModal'
 import logo from '../images/logo.png'
+import DirectorModal from './DirectorModal'
 
 const NavHeader = () => {
   return (
@@ -32,7 +33,16 @@ const NavHeader = () => {
         </div>
       </NavLink>
 
-      <MovieModal title='+ Add Movie' />
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          gap: 10,
+        }}
+      >
+        <MovieModal title={'+ Add Movie'} />
+        <DirectorModal title={'+ Add Director'} />
+      </div>
     </Box>
   )
 }
