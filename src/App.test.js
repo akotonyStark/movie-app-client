@@ -1,4 +1,5 @@
 import { render, fireEvent } from '@testing-library/react'
+import DirectorModal from './components/DirectorModal'
 import MovieModal from './components/MovieModal'
 
 describe(MovieModal, () => {
@@ -16,12 +17,9 @@ describe(MovieModal, () => {
     expect(buttonLabel).toEqual('+ Add Movie')
   })
 
-  // it('Button click triggers the save button', () => {
-  //   const { getByRole } = render(
-  //     <MovieModal movie={movie} title='+ Add Movie' />
-  //   )
-  //   const saveButton = getByRole('button', { name: 'Save' })
-  //   fireEvent.click(saveButton)
-  //   expect(buttonLabel).toEqual('+ Add Movie')
-  // })
+  it('If it renders the Director Component', () => {
+    const { getByTestId } = render(<DirectorModal title='+ Add Director' />)
+    const buttonLabel = getByTestId('button-label').textContent
+    expect(buttonLabel).toEqual('+ Add Director')
+  })
 })
