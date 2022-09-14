@@ -13,6 +13,7 @@ import useFetch from '../customHooks/useFetch'
 export default function MovieModal() {
   const [open, setOpen] = useState(false)
   const [director, setDirector] = useState('')
+  const [formData, setFormData] = useState({ name: '', release_year: '' })
   const url = 'http://localhost:3001/directors'
   const { data: directors } = useFetch(url)
 
@@ -28,7 +29,26 @@ export default function MovieModal() {
     setOpen(false)
   }
 
-  const handleSaveMovie = () => {}
+  const handleSaveMovie = () => {
+    const postData = { ...formData, director }
+    fetch(`http://localhost:3001/movie`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(postData),
+    })
+      .then((response) => {
+        if (response.ok) {
+          window.location.reload()
+        } else {
+          alert('Movie could not be saved. Please try again')
+        }
+      })
+      .catch((error) => {
+        alert(error)
+      })
+  }
 
   return (
     <div>
@@ -52,6 +72,10 @@ export default function MovieModal() {
               id='movie-name'
               label='Movie Name'
               variant='outlined'
+              value={formData.name}
+              onChange={(e) =>
+                setFormData({ ...formData, name: e.target.value })
+              }
             />
           </Box>
           <Box mt={2}>
@@ -61,6 +85,10 @@ export default function MovieModal() {
               label='Release Year'
               variant='outlined'
               type='number'
+              value={formData.release_year}
+              onChange={(e) =>
+                setFormData({ ...formData, release_year: e.target.value })
+              }
             />
           </Box>
           <Box mt={2}>
