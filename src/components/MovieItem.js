@@ -7,7 +7,6 @@ const MovieItem = ({ movie }) => {
   const navigate = useNavigate()
 
   const handleViewDetails = () => {
-    console.log('asdsad')
     navigate('/details', { state: movie })
   }
   return (
@@ -20,10 +19,7 @@ const MovieItem = ({ movie }) => {
           alt='poster'
         />
 
-        <p>{movie.name}</p>
-        <h5 style={{ color: 'gold', margin: '7px  0' }}>
-          Year: {movie.release_year}
-        </h5>
+        <p style={{ color: '#1976D2' }}>{movie.name}</p>
       </Box>
     </>
   )

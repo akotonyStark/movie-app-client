@@ -7,7 +7,6 @@ const NavHeader = () => {
   return (
     <Box
       sx={{
-        width: '100%',
         height: 50,
         backgroundColor: '#333',
         padding: 2,
