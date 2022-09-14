@@ -29,7 +29,7 @@ const NavHeader = () => {
           }}
         >
           <img src={logo} alt='logo' style={{ width: 60, height: 40 }} />
-          <span className='AppName'>Fake Netflix</span>
+          <span className='AppName'>Netfakes</span>
         </div>
       </NavLink>
 

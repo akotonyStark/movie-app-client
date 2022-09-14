@@ -39,7 +39,7 @@ export default function MovieModal({ title, movieData }) {
       })
         .then((response) => {
           if (response.ok) {
-            window.location.reload()
+            window.location.replace('/')
           } else {
             alert('Movie could not be saved. Please try again')
           }
@@ -69,16 +69,12 @@ export default function MovieModal({ title, movieData }) {
   }
 
   useEffect(() => {
-    if (title.includes('Update')) {
+    if (title === 'Click to Update Movie') {
       setFormData({
         name: movieData[0]?.name,
         release_year: movieData[0]?.release_year,
         director: movieData[0]?.director,
       })
-    }
-
-    return () => {
-      // second
     }
   }, [title, movieData])
 
@@ -153,7 +149,7 @@ export default function MovieModal({ title, movieData }) {
             Cancel
           </Button>
           <Button onClick={handleSaveOrUpdate} autoFocus>
-            {title === 'Update Movie' ? 'Update' : 'Save'}
+            {title === 'Click to Update Movie' ? 'Update' : 'Save'}
           </Button>
         </DialogActions>
       </Dialog>

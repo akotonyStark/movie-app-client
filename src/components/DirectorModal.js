@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import Button from '@mui/material/Button'
 import Dialog from '@mui/material/Dialog'
 import DialogActions from '@mui/material/DialogActions'
@@ -53,7 +53,9 @@ export default function DirectorModal({ title, data }) {
         if (response.ok) {
           window.location.reload()
         } else {
-          alert('Director could not be saved. Please try again')
+          alert(
+            'Director could not be saved. Please make sure all fields have been provided'
+          )
         }
       })
       .catch((error) => {

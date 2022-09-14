@@ -11,7 +11,13 @@ const MovieItem = ({ movie }) => {
   }
   return (
     <>
-      <Box mt={4} ml={2} className='movie' onClick={handleViewDetails}>
+      <Box
+        mt={4}
+        ml={2}
+        className='movie'
+        onClick={handleViewDetails}
+        title='Click to view details'
+      >
         <img
           className='poster'
           style={{ width: '100%', height: 250 }}

@@ -61,7 +61,7 @@ const MovieDetails = () => {
           </CardActionArea>
         </Card>
       ))}
-      <MovieModal title='Update Movie' movieData={data} />
+      <MovieModal title='Click to Update Movie' movieData={data} />
     </Box>
   )
 }
