@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Button from '@mui/material/Button'
 import Dialog from '@mui/material/Dialog'
 import DialogActions from '@mui/material/DialogActions'
@@ -10,16 +10,15 @@ import { Box } from '@mui/system'
 import MenuItem from '@mui/material/MenuItem'
 import useFetch from '../customHooks/useFetch'
 
-export default function MovieModal() {
+export default function MovieModal({ title, movieData }) {
   const [open, setOpen] = useState(false)
-  const [director, setDirector] = useState('')
-  const [formData, setFormData] = useState({ name: '', release_year: '' })
+  const [formData, setFormData] = useState({
+    name: '',
+    release_year: '',
+    director: '',
+  })
   const url = 'http://localhost:3001/directors'
   const { data: directors } = useFetch(url)
-
-  const handleChange = (event) => {
-    setDirector(event.target.value)
-  }
 
   const handleClickOpen = () => {
     setOpen(true)
@@ -29,31 +28,64 @@ export default function MovieModal() {
     setOpen(false)
   }
 
-  const handleSaveMovie = () => {
-    const postData = { ...formData, director }
-    fetch(`http://localhost:3001/movie`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(postData),
-    })
-      .then((response) => {
-        if (response.ok) {
-          window.location.reload()
-        } else {
-          alert('Movie could not be saved. Please try again')
-        }
+  const handleSaveOrUpdate = (e) => {
+    if (e.target.textContent === 'Save') {
+      fetch(`http://localhost:3001/movie`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
       })
-      .catch((error) => {
-        alert(error)
+        .then((response) => {
+          if (response.ok) {
+            window.location.reload()
+          } else {
+            alert('Movie could not be saved. Please try again')
+          }
+        })
+        .catch((error) => {
+          alert(error)
+        })
+    } else {
+      fetch(`http://localhost:3001/movie/${movieData[0]._id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
       })
+        .then((response) => {
+          if (response.ok) {
+            window.location.reload()
+          } else {
+            alert('Movie could not be updated. Please try again')
+          }
+        })
+        .catch((error) => {
+          alert(error)
+        })
+    }
   }
+
+  useEffect(() => {
+    if (title.includes('Update')) {
+      setFormData({
+        name: movieData[0]?.name,
+        release_year: movieData[0]?.release_year,
+        director: movieData[0]?.director,
+      })
+    }
+
+    return () => {
+      // second
+    }
+  }, [title, movieData])
 
   return (
     <div>
       <Button variant='contained' onClick={handleClickOpen}>
-        + Add Movie
+        {title}
       </Button>
       <Dialog
         open={open}
@@ -63,7 +95,9 @@ export default function MovieModal() {
         fullWidth
       >
         <DialogTitle id='alert-dialog-title'>
-          {'Enter the following details'}
+          {title === '+ Add Movie'
+            ? 'Enter the following details'
+            : 'Update Movie'}
         </DialogTitle>
         <DialogContent>
           <Box mt={2}>
@@ -97,8 +131,10 @@ export default function MovieModal() {
               id='outlined-select-director'
               select
               label='Select'
-              value={director}
-              onChange={handleChange}
+              value={formData.director}
+              onChange={(e) =>
+                setFormData({ ...formData, director: e.target.value })
+              }
             >
               {directors?.map((option) => (
                 <MenuItem key={option._id} value={option._id}>
@@ -112,8 +148,8 @@ export default function MovieModal() {
           <Button onClick={handleClose} color='error'>
             Cancel
           </Button>
-          <Button onClick={handleSaveMovie} autoFocus>
-            Save
+          <Button onClick={handleSaveOrUpdate} autoFocus>
+            {title === 'Update Movie' ? 'Update' : 'Save'}
           </Button>
         </DialogActions>
       </Dialog>

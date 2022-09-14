@@ -16,7 +16,12 @@ const MovieList = () => {
   }
 
   return (
-    <Grid container spacing={2} sx={{ display: 'flex' }}>
+    <Grid
+      container
+      gap={2}
+      sx={{ display: 'flex', alignItems: 'center' }}
+      className='movie-card'
+    >
       {isError && (
         <h1 style={{ color: 'darkred' }}>
           Error, failed to load data from API

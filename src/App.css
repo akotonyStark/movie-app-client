@@ -8,11 +8,11 @@
 
 .movie {
   background-color: #333;
-  width: 175px;
+  width: 200px;
+  height: 320px;
   border-radius: 0rem;
   padding: 1rem 2rem;
   color: white;
-  margin-left: 50px;
 }
 
 .movie:hover {
@@ -29,4 +29,15 @@ body {
   background-color: #222;
   color: white;
   margin: 0 auto;
+}
+
+@media (max-width: 500px) {
+  .movie-card {
+    display: flex;
+    justify-content: center;
+  }
+
+  .AppName {
+    display: none;
+  }
 }

@@ -10,10 +10,11 @@ const useFetch = (url) => {
 
     try {
       const request = await fetch(url)
+      console.log(request)
       const response = await request.json()
 
       if (!response) {
-        throw new Error(error)
+        setError(error)
       }
       setData(response)
     } catch (error) {

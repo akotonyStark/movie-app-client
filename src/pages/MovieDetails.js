@@ -5,11 +5,11 @@ import { Box, CircularProgress } from '@mui/material'
 import Card from '@mui/material/Card'
 import CardActions from '@mui/material/CardActions'
 import CardContent from '@mui/material/CardContent'
-import Button from '@mui/material/Button'
 import CardMedia from '@mui/material/CardMedia'
 import Typography from '@mui/material/Typography'
 import { CardActionArea } from '@mui/material'
 import poster from '../images/poster.png'
+import MovieModal from '../components/MovieModal'
 
 const MovieDetails = () => {
   const { state } = useLocation()
@@ -52,7 +52,7 @@ const MovieDetails = () => {
               <Typography variant='body2' color='text.secondary'>
                 Release Year: {movie.release_year}
               </Typography>
-              <Typography gutterBottom variant='h6' component='div'>
+              <Typography variant='body2' color='text.secondary'>
                 Directed By: {movie.director.first_name}{' '}
                 {movie.director.last_name}
               </Typography>
@@ -61,9 +61,7 @@ const MovieDetails = () => {
           </CardActionArea>
         </Card>
       ))}
-      <Button size='small' variant='contained'>
-        Update Movie Details
-      </Button>
+      <MovieModal title='Update Movie' movieData={data} />
     </Box>
   )
 }

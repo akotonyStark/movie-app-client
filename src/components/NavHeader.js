@@ -2,6 +2,7 @@ import React from 'react'
 import Box from '@mui/material/Box'
 import { NavLink } from 'react-router-dom'
 import MovieModal from './MovieModal'
+import logo from '../images/logo.png'
 
 const NavHeader = () => {
   return (
@@ -17,12 +18,21 @@ const NavHeader = () => {
     >
       <NavLink
         to='/'
-        style={{ fontSize: 30, color: 'gold', textDecoration: 'none' }}
+        style={{ fontSize: 30, color: 'darkred', textDecoration: 'none' }}
       >
-        MovieApp
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+          }}
+        >
+          <img src={logo} alt='logo' style={{ width: 60, height: 40 }} />
+          <span className='AppName'>Fake Netflix</span>
+        </div>
       </NavLink>
 
-      <MovieModal />
+      <MovieModal title='+ Add Movie' />
     </Box>
   )
 }

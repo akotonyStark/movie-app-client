@@ -11,10 +11,10 @@ const MovieItem = ({ movie }) => {
   }
   return (
     <>
-      <Box mt={4} className='movie' onClick={handleViewDetails}>
+      <Box mt={4} ml={2} className='movie' onClick={handleViewDetails}>
         <img
           className='poster'
-          style={{ width: 'auto', height: 250 }}
+          style={{ width: '100%', height: 250 }}
           src={poster}
           alt='poster'
         />
