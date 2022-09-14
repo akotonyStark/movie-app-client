@@ -9,6 +9,7 @@ import TextField from '@mui/material/TextField'
 import { Box } from '@mui/system'
 import MenuItem from '@mui/material/MenuItem'
 import useFetch from '../customHooks/useFetch'
+import PropTypes from 'prop-types'
 
 export default function MovieModal({ title, movieData }) {
   const [open, setOpen] = useState(false)
@@ -155,4 +156,8 @@ export default function MovieModal({ title, movieData }) {
       </Dialog>
     </div>
   )
+}
+
+MovieModal.propTypes = {
+  title: PropTypes.string,
 }

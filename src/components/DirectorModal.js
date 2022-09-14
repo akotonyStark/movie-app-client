@@ -9,8 +9,9 @@ import TextField from '@mui/material/TextField'
 import { Box } from '@mui/system'
 import MenuItem from '@mui/material/MenuItem'
 import useFetch from '../customHooks/useFetch'
+import PropTypes from 'prop-types'
 
-export default function DirectorModal({ title, data }) {
+export default function DirectorModal({ title }) {
   const [open, setOpen] = useState(false)
   const [formData, setFormData] = useState({
     first_name: '',
@@ -150,4 +151,8 @@ export default function DirectorModal({ title, data }) {
       </Dialog>
     </div>
   )
+}
+
+DirectorModal.propTypes = {
+  title: PropTypes.string,
 }
