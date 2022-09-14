@@ -1,6 +1,6 @@
 import React from 'react'
 import Box from '@mui/material/Box'
-import { Button } from '@mui/material'
+// import { Button } from '@mui/material'
 
 const NavHeader = () => {
   return (
@@ -10,7 +10,7 @@ const NavHeader = () => {
         height: 80,
         backgroundColor: '#333',
         padding: 2,
-        color: 'darkred',
+        color: 'gold',
       }}
     >
       <h1>MovieApp</h1>

@@ -2,7 +2,7 @@ import React from 'react'
 import poster from '../images/poster.png'
 import Box from '@mui/material/Box'
 
-const MovieItem = () => {
+const MovieItem = ({ movie }) => {
   return (
     <>
       <Box mt={4} className='movie'>
@@ -13,8 +13,10 @@ const MovieItem = () => {
           alt='poster'
         />
 
-        <p>{'Title'}</p>
-        <h5 style={{ color: 'gold', margin: '7px  0' }}>Year: {1990}</h5>
+        <p>{movie.name}</p>
+        <h5 style={{ color: 'gold', margin: '7px  0' }}>
+          Year: {movie.release_year}
+        </h5>
       </Box>
     </>
   )
